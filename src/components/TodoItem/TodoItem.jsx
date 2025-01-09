@@ -9,9 +9,29 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function TodoItem({ id, title, text, complete }) {
+export default function TodoItem({
+  id,
+  title,
+  text,
+  complete,
+  todos,
+  setTodos,
+}) {
+  const deleteItem = (id) => {
+    setTodos((prev) => {
+      return prev.filter((item) => item.id !== id);
+    });
+  };
+
   return (
-    <ListItem sx={{ padding: 0, width: "300px", flexGrow: 1 }}>
+    <ListItem
+      sx={{
+        padding: 0,
+        width: "300px",
+        maxWidth: "300px",
+        flexGrow: 1,
+      }}
+    >
       <Card sx={{ padding: 2 }}>
         <Box
           sx={{
@@ -25,7 +45,11 @@ export default function TodoItem({ id, title, text, complete }) {
             <IconButton>
               <EditIcon />
             </IconButton>
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                deleteItem(id);
+              }}
+            >
               <DeleteIcon />
             </IconButton>
           </Stack>

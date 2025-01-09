@@ -11,6 +11,8 @@ export default function TodosList({ todos, setTodos }) {
           title={title}
           text={text}
           complete={complete}
+          todos={todos}
+          setTodos={setTodos}
         />
       ))}
     </List>
