@@ -11,14 +11,14 @@ import { nanoid } from "nanoid";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function AddForm({ setTodos }) {
+export default function AddForm({ setTasks }) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const addTodo = (newTodo) => {
-    setTodos((prev) => {
+    setTasks((prev) => {
       return [...prev, newTodo];
     });
   };
@@ -63,7 +63,7 @@ export default function AddForm({ setTodos }) {
           >
             <CloseIcon />
           </IconButton>
-          <Typography variant='h6'>Create new todo</Typography>
+          <Typography variant='h6'>Create new task</Typography>
 
           <TextField label='Title' name='title'></TextField>
           <TextField

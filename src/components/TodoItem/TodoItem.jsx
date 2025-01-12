@@ -14,11 +14,11 @@ export default function TodoItem({
   title,
   text,
   complete,
-  todos,
-  setTodos,
+  tasks,
+  setTasks,
 }) {
   const deleteItem = (id) => {
-    setTodos((prev) => {
+    setTasks((prev) => {
       return prev.filter((item) => item.id !== id);
     });
   };
@@ -28,7 +28,6 @@ export default function TodoItem({
       sx={{
         padding: 0,
         width: "300px",
-        maxWidth: "300px",
         flexGrow: 1,
       }}
     >

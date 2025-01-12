@@ -1,10 +1,11 @@
-import { CssBaseline, Container } from "@mui/material";
+import { CssBaseline, Container, Box } from "@mui/material";
 import { useState } from "react";
 import TodosList from "../TodosList/TodosList";
 import AddForm from "../AddForm/AddForm";
+import SearchBar from "../SearchForm/SearchForm";
 
 export default function App() {
-  const [todos, setTodos] = useState([
+  const [tasks, setTasks] = useState([
     {
       id: 1,
       title: "My first todo",
@@ -42,12 +43,31 @@ export default function App() {
       complete: false,
     },
   ]);
+  const [query, setQuery] = useState("");
+
+  const getFilteredTasks = () => {
+    return tasks.filter(
+      (task) =>
+        task.title.toLowerCase().includes(query.toLowerCase()) ||
+        task.text.toLowerCase().includes(query.toLowerCase())
+    );
+  };
 
   return (
     <CssBaseline>
       <Container>
-        <AddForm todos={todos} setTodos={setTodos} />
-        <TodosList todos={todos} setTodos={setTodos} />
+        <Box
+          sx={{
+            pt: 2,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <AddForm tasks={tasks} setTasks={setTasks} />
+          <SearchBar query={query} setQuery={setQuery} />
+        </Box>
+        <TodosList tasks={getFilteredTasks()} setTasks={setTasks} />
       </Container>
     </CssBaseline>
   );
