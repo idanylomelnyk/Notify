@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { List } from "@mui/material";
 import TodoItem from "../TodoItem/TodoItem";
 
 export default function TodosList({ tasks, setTasks }) {
   return (
-    <List sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+    <List sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
       {tasks.map(({ id, title, text, complete }) => (
         <TodoItem
           key={id}
