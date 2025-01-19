@@ -2,7 +2,7 @@ import { CssBaseline, Container, Box } from "@mui/material";
 import { useState } from "react";
 import TodosList from "../TodosList/TodosList";
 import AddForm from "../AddForm/AddForm";
-import SearchBar from "../SearchForm/SearchForm";
+import SearchAppBar from "../SearchAppBar/SearchAppBar";
 
 export default function App() {
   const [tasks, setTasks] = useState([
@@ -55,6 +55,7 @@ export default function App() {
 
   return (
     <CssBaseline>
+      <SearchAppBar query={query} setQuery={setQuery} />
       <Container>
         <Box
           sx={{
@@ -65,7 +66,6 @@ export default function App() {
           }}
         >
           <AddForm tasks={tasks} setTasks={setTasks} />
-          <SearchBar query={query} setQuery={setQuery} />
         </Box>
         <TodosList tasks={getFilteredTasks()} setTasks={setTasks} />
       </Container>
